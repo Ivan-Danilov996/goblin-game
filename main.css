@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    cursor: url(70fdddcdd242fa4971f14e0619021907.png), auto;
+}
+
+.container {
+    max-width: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    flex-direction: column;
+}
+.board {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.cell {
+    width: 120px;
+    height: 120px;
+    border: 1px solid blue;
+}
+
+img {
+    width: 100%
+}
