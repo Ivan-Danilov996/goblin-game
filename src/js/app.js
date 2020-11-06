@@ -7,6 +7,8 @@ let oldIndex;
 let intervalId;
 scoreNode.textContent = 0;
 error.textContent = 0;
+let click = false;
+let count = 0;
 
 function addGoblin(index) {
   if (oldIndex || oldIndex === 0) {
@@ -32,10 +34,26 @@ function startGame() {
 function runInterval() {
   intervalId = setInterval(() => {
     startGame();
+    console.log(click);
+    if (!click && count > 0) {
+      error.textContent = parseInt(error.textContent, 10) + 1;
+      if (parseInt(error.textContent, 10) >= 5) {
+        const loseMessage = document.createElement('p');
+        loseMessage.textContent = 'вы проиграли';
+        document.querySelector('.container').insertAdjacentElement('afterbegin', loseMessage);
+        clearInterval(intervalId);
+        // cells.forEach((cell) => {
+        //   cell.removeEventListener('click', clicked);
+        // });
+      }
+    }
+    click = false;
+    count += 1;
   }, 1000);
 }
 
 function clicked(e) {
+  click = true;
   if (e.currentTarget.innerHTML !== '') {
     scoreNode.textContent = parseInt(scoreNode.textContent, 10) + 1;
     clearInterval(intervalId);
